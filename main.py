@@ -1,20 +1,23 @@
 from math import hypot
 
 
+points_list = [
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (-1, -5),
+    (0, 0),
+]
+
+
 class Point(object):
-    def __init__(self):
-        raw_x_value = self.request_coordinate('x')
-        self.x = self.to_int(raw_x_value)
-
-        raw_y_value = self.request_coordinate('y')
-        self.y = self.to_int(raw_y_value)
-
-    def request_coordinate(self, name):
-        return input("Enter %s:" % name)
+    def __init__(self, x, y):
+        self.x = self.to_int(x)
+        self.y = self.to_int(y)
 
     def to_int(self, source):
         try:
-            return int(source)
+            return float(source)
         except ValueError:
             raise Exception('Wrong type: %s! Must be int.' % source)
 
@@ -23,15 +26,19 @@ class Point(object):
 
 
 def main(*args, **kwargs):
-    print('First point:')
-    first_point = Point()
+    if len(points_list) < 2:
+        raise Exception('Must be more then 1 point in point_list: %s' % points_list)
 
-    print('Second point:')
-    second_point = Point()
+    current_point = Point(*points_list.pop(0))
+    total_distance = 0
 
-    distance = first_point.distance_to(second_point)
+    for x_value, y_value in points_list:
+        next_point = Point(x_value, y_value)
 
-    print('Distance: %s' % distance)
+        total_distance += current_point.distance_to(next_point)
+        current_point = next_point
+
+    print('Distance: %s' % total_distance)
 
 
 main()
