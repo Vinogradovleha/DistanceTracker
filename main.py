@@ -57,7 +57,7 @@ def main(*args, **kwargs):
         total_distance += current_point.distance_to(next_point)
         current_point = next_point
 
-    print('Distance: %s' % total_distance)
+    print('Distance (km): %s' % total_distance)
 
 
 main()
