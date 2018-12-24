@@ -19,10 +19,10 @@ class GPSPoint(object):
     EARTH_RADIUS_KM = 6371
 
     def __init__(self, lat, lon):
-        self.lat = self.to_int(lat)
-        self.lon = self.to_int(lon)
+        self.lat = self.to_float(lat)
+        self.lon = self.to_float(lon)
 
-    def to_int(self, source):
+    def to_float(self, source):
         try:
             return float(source)
         except ValueError:
