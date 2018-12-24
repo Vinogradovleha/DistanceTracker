@@ -16,7 +16,7 @@ points_list = [
 
 
 class GPSPoint(object):
-    EARTH_RADIUS_KM = 6371
+    EARTH_RADIUS_KM = 6371.221
 
     def __init__(self, lat, lon):
         self.lat = self.to_float(lat)
